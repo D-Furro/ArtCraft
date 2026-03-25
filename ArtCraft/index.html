@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArtCraft</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════ HOME SCREEN -->
+  <div id="home-screen">
+
+    <div class="home-hero">
+      <div class="home-logo">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="24" y1="4" x2="24" y2="10" stroke="#b94fff" stroke-width="2.2" stroke-linecap="round" />
+          <line x1="24" y1="38" x2="24" y2="44" stroke="#9b30ff" stroke-width="2.2" stroke-linecap="round" />
+          <line x1="4" y1="24" x2="10" y2="24" stroke="#b94fff" stroke-width="2.2" stroke-linecap="round" />
+          <line x1="38" y1="24" x2="44" y2="24" stroke="#9b30ff" stroke-width="2.2" stroke-linecap="round" />
+          <line x1="9" y1="9" x2="14" y2="14" stroke="#cc66ff" stroke-width="2" stroke-linecap="round" />
+          <line x1="39" y1="9" x2="34" y2="14" stroke="#cc66ff" stroke-width="2" stroke-linecap="round" />
+          <line x1="9" y1="39" x2="14" y2="34" stroke="#aa44ee" stroke-width="2" stroke-linecap="round" />
+          <line x1="39" y1="39" x2="34" y2="34" stroke="#aa44ee" stroke-width="2" stroke-linecap="round" />
+          <circle cx="24" cy="24" r="13" fill="url(#aglow-home)" />
+          <defs>
+            <radialGradient id="aglow-home" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#9b30ff" stop-opacity="0.45" />
+              <stop offset="100%" stop-color="#5500cc" stop-opacity="0.1" />
+            </radialGradient>
+          </defs>
+          <text x="24" y="31" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900"
+            font-size="22" fill="white">A</text>
+        </svg>
+        <div class="home-logo-text">ArtCraft <span>1.0</span></div>
+      </div>
+
+      <div class="home-buttons">
+        <button class="home-btn" id="btn-home-gallery" title="A Minha Galeria">
+          <div class="home-btn-circle">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37l-1.34-1.34c-.39-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.02 0-1.41z"
+                fill="currentColor" />
+            </svg>
+          </div>
+          <span>A Minha Galeria</span>
+        </button>
+        <button class="home-btn" id="btn-local-gallery" title="Galeria Local">
+          <div class="home-btn-circle">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.09 13.36 4 12.69 4 12s.09-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c1.37-2.61 3.8-4.48 6.75-5.18.23.36.44.73.64 1.11-1.54.89-2.73 2.33-3.44 4.07zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.34.16-2h4.68c.09.66.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.17.64.26 1.31.26 2s-.09 1.36-.26 2h-3.38z"
+                fill="currentColor" />
+            </svg>
+          </div>
+          <span>Galeria Local</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ LOCAL GALLERY MODAL -->
+  <div id="local-gallery-modal" class="hidden">
+    <div class="entry-bg"></div>
+    <div class="entry-content">
+      <div class="entry-card gallery-card">
+        <div class="entry-card-header" style="justify-content: space-between;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56z"
+                fill="currentColor" />
+            </svg>
+            Galeria Local
+          </div>
+          <button id="btn-close-gallery" class="btn-cancel" style="padding: 4px 12px; font-size: 13px;">Voltar</button>
+        </div>
+        <div id="gallery-grid" class="gallery-grid">
+          <!-- Arts will be injected here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ NEW CANVAS MODAL -->
+  <div id="new-canvas-modal" class="hidden">
+    <div class="entry-bg"></div>
+    <div class="entry-content">
+      <!-- Logo -->
+      <div class="entry-logo">
+        <div class="entry-logo-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Purple sparks radiating outward -->
+            <line x1="24" y1="4" x2="24" y2="10" stroke="#b94fff" stroke-width="2.2" stroke-linecap="round" />
+            <line x1="24" y1="38" x2="24" y2="44" stroke="#9b30ff" stroke-width="2.2" stroke-linecap="round" />
+            <line x1="4" y1="24" x2="10" y2="24" stroke="#b94fff" stroke-width="2.2" stroke-linecap="round" />
+            <line x1="38" y1="24" x2="44" y2="24" stroke="#9b30ff" stroke-width="2.2" stroke-linecap="round" />
+            <line x1="9" y1="9" x2="14" y2="14" stroke="#cc66ff" stroke-width="2" stroke-linecap="round" />
+            <line x1="39" y1="9" x2="34" y2="14" stroke="#cc66ff" stroke-width="2" stroke-linecap="round" />
+            <line x1="9" y1="39" x2="14" y2="34" stroke="#aa44ee" stroke-width="2" stroke-linecap="round" />
+            <line x1="39" y1="39" x2="34" y2="34" stroke="#aa44ee" stroke-width="2" stroke-linecap="round" />
+            <!-- Mini sparks at odd angles -->
+            <line x1="15" y1="5" x2="17" y2="10" stroke="#dd88ff" stroke-width="1.5" stroke-linecap="round"
+              opacity="0.8" />
+            <line x1="33" y1="5" x2="31" y2="10" stroke="#dd88ff" stroke-width="1.5" stroke-linecap="round"
+              opacity="0.8" />
+            <line x1="5" y1="15" x2="10" y2="17" stroke="#dd88ff" stroke-width="1.5" stroke-linecap="round"
+              opacity="0.8" />
+            <line x1="5" y1="33" x2="10" y2="31" stroke="#dd88ff" stroke-width="1.5" stroke-linecap="round"
+              opacity="0.8" />
+            <line x1="43" y1="15" x2="38" y2="17" stroke="#dd88ff" stroke-width="1.5" stroke-linecap="round"
+              opacity="0.8" />
+            <line x1="43" y1="33" x2="38" y2="31" stroke="#dd88ff" stroke-width="1.5" stroke-linecap="round"
+              opacity="0.8" />
+            <!-- Glow circle behind A -->
+            <circle cx="24" cy="24" r="13" fill="url(#aglow)" />
+            <defs>
+              <radialGradient id="aglow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#9b30ff" stop-opacity="0.45" />
+                <stop offset="100%" stop-color="#5500cc" stop-opacity="0.1" />
+              </radialGradient>
+            </defs>
+            <!-- White bold A -->
+            <text x="24" y="31" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900"
+              font-size="22" fill="white">A</text>
+          </svg>
+        </div>
+        <div class="entry-logo-text">
+          <span class="logo-ibis">Art</span><span class="logo-paint">Craft</span>
+        </div>
+      </div>
+
+      <!-- New Canvas Card -->
+      <div class="entry-card">
+        <div class="entry-card-header">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
+              fill="currentColor" />
+          </svg>
+          Nova Arte
+        </div>
+
+        <!-- Preset buttons -->
+        <div class="preset-grid">
+          <button class="preset-btn active" data-w="2048" data-h="2048" data-label="2048×2048">
+            <span class="preset-icon">🖼</span>
+            <span class="preset-size">2048×2048</span>
+            <span class="preset-dpi">72dpi</span>
+          </button>
+          <button class="preset-btn" data-w="1080" data-h="1920" data-label="FHD Vertical">
+            <span class="preset-icon">📱</span>
+            <span class="preset-size">1080×1920</span>
+            <span class="preset-dpi">FHD</span>
+          </button>
+          <button class="preset-btn" data-w="1920" data-h="1080" data-label="FHD Horizontal">
+            <span class="preset-icon">🖥</span>
+            <span class="preset-size">1920×1080</span>
+            <span class="preset-dpi">FHD</span>
+          </button>
+          <button class="preset-btn" data-w="3508" data-h="2480" data-label="A4 300dpi">
+            <span class="preset-icon">📄</span>
+            <span class="preset-size">3508×2480</span>
+            <span class="preset-dpi">A4 300dpi</span>
+          </button>
+          <button class="preset-btn" data-w="4096" data-h="4096" data-label="4096×4096">
+            <span class="preset-icon">⬛</span>
+            <span class="preset-size">4096×4096</span>
+            <span class="preset-dpi">Alta Res</span>
+          </button>
+          <button class="preset-btn" data-w="800" data-h="600" data-label="800×600">
+            <span class="preset-icon">🔲</span>
+            <span class="preset-size">800×600</span>
+            <span class="preset-dpi">Web</span>
+          </button>
+        </div>
+
+        <!-- Custom size -->
+        <div class="custom-size-row">
+          <span class="custom-label">Personalizado</span>
+          <div class="custom-inputs">
+            <input type="number" id="entry-w" value="2048" min="1" max="8000" placeholder="Largura">
+            <span class="custom-x">×</span>
+            <input type="number" id="entry-h" value="2048" min="1" max="8000" placeholder="Altura">
+            <span class="custom-unit">px</span>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="entry-actions">
+          <button id="btn-entry-create" class="btn-create">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"
+                fill="currentColor" />
+            </svg>
+            Criar
+          </button>
+          <button id="btn-entry-open" class="btn-open-img">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z"
+                fill="currentColor" />
+            </svg>
+            Abrir Imagem
+          </button>
+        </div>
+      </div>
+
+      <div class="entry-footer">ArtCraft</div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════ PAINTING APP -->
+  <div id="app" class="hidden">
+
+    <!-- TOP BAR -->
+    <div id="topbar">
+      <div class="tb-left">
+        <button id="btn-back" class="tb-icon-btn" title="Voltar">
+          <svg viewBox="0 0 24 24">
+            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" fill="currentColor" />
+          </svg>
+        </button>
+        <button id="btn-undo" class="tb-icon-btn" title="Desfazer (Ctrl+Z)">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z"
+              fill="currentColor" />
+          </svg>
+        </button>
+        <button id="btn-redo" class="tb-icon-btn" title="Refazer (Ctrl+Y)">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M18.4 10.6C16.55 8.99 14.15 8 11.5 8c-4.65 0-8.58 3.03-9.96 7.22L3.9 16c1.05-3.19 4.05-5.5 7.6-5.5 1.95 0 3.73.72 5.12 1.88L13 16h9V7l-3.6 3.6z"
+              fill="currentColor" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="tb-center">
+        <div class="app-logo-small">
+          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:20px;height:20px">
+            <line x1="11" y1="1" x2="11" y2="5" stroke="#b94fff" stroke-width="1.8" stroke-linecap="round" />
+            <line x1="11" y1="17" x2="11" y2="21" stroke="#9b30ff" stroke-width="1.8" stroke-linecap="round" />
+            <line x1="1" y1="11" x2="5" y2="11" stroke="#b94fff" stroke-width="1.8" stroke-linecap="round" />
+            <line x1="17" y1="11" x2="21" y2="11" stroke="#9b30ff" stroke-width="1.8" stroke-linecap="round" />
+            <line x1="3" y1="3" x2="6" y2="6" stroke="#cc66ff" stroke-width="1.5" stroke-linecap="round" />
+            <line x1="19" y1="3" x2="16" y2="6" stroke="#cc66ff" stroke-width="1.5" stroke-linecap="round" />
+            <line x1="3" y1="19" x2="6" y2="16" stroke="#cc66ff" stroke-width="1.5" stroke-linecap="round" />
+            <line x1="19" y1="19" x2="16" y2="16" stroke="#cc66ff" stroke-width="1.5" stroke-linecap="round" />
+            <circle cx="11" cy="11" r="6" fill="url(#aglow2)" />
+            <defs>
+              <radialGradient id="aglow2" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#9b30ff" stop-opacity="0.5" />
+                <stop offset="100%" stop-color="#5500cc" stop-opacity="0.1" />
+              </radialGradient>
+            </defs>
+            <text x="11" y="15" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900"
+              font-size="10" fill="white">A</text>
+          </svg>
+          <span>ArtCraft</span>
+        </div>
+        <span id="canvas-info">2048 × 2048</span>
+      </div>
+
+      <div class="tb-right">
+        <span id="zoom-display">100%</span>
+        <button id="btn-zoom-fit" class="tb-icon-btn" title="Ajustar">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M15 3l2.3 2.3-2.89 2.87 1.42 1.42L18.7 6.7 21 9V3h-6zM3 9l2.3-2.3 2.87 2.89 1.42-1.42L6.7 5.3 9 3H3v6zm6 12l-2.3-2.3 2.89-2.87-1.42-1.42L5.3 17.3 3 15v6h6zm12-6l-2.3 2.3-2.87-2.89-1.42 1.42 2.89 2.87L15 21h6v-6z"
+              fill="currentColor" />
+          </svg>
+        </button>
+        <button id="btn-save" class="tb-icon-btn" title="Salvar">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M17 12h-5v5h5v-5zM16 1l-6 0-1 0H5c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7l-5-6zm3 20H5V3h7v5h7v13z"
+              fill="currentColor" />
+          </svg>
+        </button>
+        <button id="btn-menu" class="tb-icon-btn" title="Menu">
+          <svg viewBox="0 0 24 24">
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="currentColor" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- LEFT TOOLBAR -->
+    <div id="left-toolbar">
+      <!-- 1. Transformar -->
+      <button class="tool-btn" data-tool="transform" title="Transformar">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2L8 6h3v5H6V8L2 12l4 4v-3h5v5H8l4 4 4-4h-3v-5h5v3l4-4-4-4v3h-5V6h3z" fill="currentColor" />
+        </svg>
+        <span>Transformar</span>
+      </button>
+      <!-- 2. Varinha Mágica -->
+      <button class="tool-btn" data-tool="magic-wand" title="Varinha Mágica">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M7.5 5.6L10 7 8.6 4.5 10 2 7.5 3.4 5 2l1.4 2.5L5 7zm12 9.8L17 14l1.4 2.5L17 19l2.5-1.4L22 19l-1.4-2.5L22 14zM22 2l-2.5 1.4L18.1 1 16.7 3.5 14.2 2l1.4 2.5L14.2 7l2.5-1.4L18.1 8 19.5 5.5 22 7zm-3.4 12.3c-.4-.4-1.1-.4-1.5 0l-12 12c-.4.4-.4 1.1 0 1.5.4.4 1.1.4 1.5 0l12-12c.4-.4.4-1.1 0-1.5z"
+            fill="currentColor" />
+        </svg>
+        <span>Varinha</span>
+      </button>
+      <!-- 3. Laço -->
+      <button class="tool-btn" data-tool="lasso" title="Laço (L)">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+            fill="currentColor" />
+        </svg>
+        <span>Laço</span>
+      </button>
+      <!-- 4. Filtro -->
+      <button class="tool-btn" data-tool="filter" title="Filtro (FX)">
+        <svg viewBox="0 0 24 24"><text x="12" y="16" text-anchor="middle" font-family="Arial Black, sans-serif"
+            font-weight="900" font-size="11" fill="currentColor">FX</text>
+          <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2" />
+        </svg>
+        <span>Filtro</span>
+      </button>
+      <!-- 5. Pincel -->
+      <button class="tool-btn active" data-tool="brush" title="Pincel (B)">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37l-1.34-1.34c-.39-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.02 0-1.41z"
+            fill="currentColor" />
+        </svg>
+        <span>Pincel</span>
+      </button>
+      <!-- 6. Borracha -->
+      <button class="tool-btn" data-tool="eraser" title="Borracha (E)">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M15.14 3c-.51 0-1.02.2-1.41.59L2.59 14.73c-.78.77-.78 2.04 0 2.83L5.03 20h15.49v-2H9.02l10.42-10.41c.79-.78.79-2.05.01-2.83l-2.9-2.17c-.38-.38-.89-.59-1.41-.59z"
+            fill="currentColor" />
+        </svg>
+        <span>Borracha</span>
+      </button>
+      <!-- 7. Borrar -->
+      <button class="tool-btn" data-tool="smudge" title="Borrar (Misturar)">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M9 11.2V4c0-1.1.9-2 2-2s2 .9 2 2v1.5c1.1 0 2.2.8 2.2 1.8v.7c1-.2 1.8.8 1.8 1.7v.5c1-.1 1.8.9 1.8 1.8V17c0 3.3-2.7 6-6 6h-1c-2.4 0-4.6-1.6-5.5-3.8l-1.7-4.1c-.2-.6 0-1.2.6-1.4.5-.2 1.1-.1 1.4.3l2.2 2.7v-5.5c0-1.1.9-2 2-2z"
+            fill="currentColor" />
+        </svg>
+        <span>Borrar</span>
+      </button>
+      <!-- 8. Desfoque -->
+      <button class="tool-btn" data-tool="blur" title="Desfoque">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 21c-2.8 0-5.1-2.3-5.1-5.1 0-2.8 5.1-13.9 5.1-13.9s5.1 11.1 5.1 13.9c0 2.8-2.3 5.1-5.1 5.1z"
+            fill="currentColor" />
+        </svg>
+        <span>Desfoque</span>
+      </button>
+      <!-- 9. Especial -->
+      <button class="tool-btn" data-tool="special" title="Especial">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M11 2L8.5 7.5 3 10l5.5 2.5L11 18l2.5-5.5L19 10l-5.5-2.5zm6 11l-1.2 2.8L13 17l2.8 1.2L17 21l1.2-2.8L21 17l-2.8-1.2z"
+            fill="currentColor" />
+        </svg>
+        <span>Especial</span>
+      </button>
+      <!-- 10. Lata de Tinta -->
+      <button class="tool-btn" data-tool="fill" title="Lata de Tinta (G)">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M16.56 8.94L7.62 0 6.21 1.41l2.38 2.38-5.15 5.15c-.59.56-.59 1.53 0 2.12l5.5 5.5c.29.29.68.44 1.06.44s.77-.15 1.06-.44l5.5-5.5c.59-.59.59-1.56 0-2.12zM5.21 10L10 5.21 14.79 10H5.21zM19 11.5s-2 2.17-2 3.5c0 1.1.9 2 2 2s2-.9 2-2c0-1.33-2-3.5-2-3.5z"
+            fill="currentColor" />
+        </svg>
+        <span>Preencher</span>
+      </button>
+      <!-- 11. Vetor / Selecionar -->
+      <button class="tool-btn" data-tool="select" title="Selecionar (V)">
+        <svg viewBox="0 0 24 24">
+          <path d="M7 2v19l4-4h7l-11-15z" fill="currentColor" stroke="currentColor" stroke-width="1"
+            stroke-linejoin="round" />
+        </svg>
+        <span>Selecionar</span>
+      </button>
+      <!-- 12. Texto -->
+      <button class="tool-btn" data-tool="text" title="Texto (T)">
+        <svg viewBox="0 0 24 24">
+          <path d="M5 4v3h5.5v12h3V7H19V4z" fill="currentColor" />
+        </svg>
+        <span>Texto</span>
+      </button>
+      <!-- 13. Moldura -->
+      <button class="tool-btn" data-tool="frame" title="Moldura">
+        <svg viewBox="0 0 24 24">
+          <path d="M4 4h16v16H4z" fill="none" stroke="currentColor" stroke-width="2" />
+          <path d="M4 12h16m-8-8v16" stroke="currentColor" stroke-width="2" />
+        </svg>
+        <span>Moldura</span>
+      </button>
+      <!-- 14. Conta-gotas -->
+      <button class="tool-btn" data-tool="eyedropper" title="Conta-gotas (I)">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M20.71 5.63l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-3.12 3.12-1.41-1.42-1.42 1.42 1.41 1.41L3 17.25V21h3.75l9.46-9.46 1.41 1.41 1.42-1.42-1.42-1.41 3.12-3.12c.4-.39.4-1.02-.03-1.37zM6.92 19H5v-1.92l8.06-8.06 1.92 1.92L6.92 19z"
+            fill="currentColor" />
+        </svg>
+        <span>Conta-gotas</span>
+      </button>
+      <!-- 15. Tela -->
+      <button class="tool-btn" data-tool="canvas" title="Tela">
+        <svg viewBox="0 0 24 24">
+          <path d="M17 15h2V7c0-1.1-.9-2-2-2H9v2h8v8zM7 17V1H5v4H1v2h4v10c0 1.1.9 2 2 2h10v4h2v-4h4v-2H7z"
+            fill="currentColor" />
+        </svg>
+        <span>Tela</span>
+      </button>
+      <div class="tool-sep"></div>
+      <!-- Color swatches -->
+      <div id="quick-colors">
+        <div id="qc-bg" title="Cor de Fundo"></div>
+        <div id="qc-fg" title="Cor Principal"></div>
+        <button id="btn-swap-colors" title="Trocar Cores">⇄</button>
+      </div>
+    </div>
+
+    <!-- CANVAS VIEWPORT -->
+    <div id="canvas-viewport">
+      <div id="canvas-wrapper">
+        <canvas id="checkerboard"></canvas>
+        <canvas id="display-canvas"></canvas>
+        <canvas id="cursor-overlay"></canvas>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL — Layers + Brush Library -->
+    <div id="right-panel">
+      <div id="panel-tabs">
+        <button class="panel-tab active" data-panel="layers">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27-7.38 5.74zM12 16l7.36-5.73L21 9l-9-7-9 7 1.63 1.27L12 16z"
+              fill="currentColor" />
+          </svg>
+          Camadas
+        </button>
+        <button class="panel-tab" data-panel="brushlib">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37l-1.34-1.34c-.39-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.02 0-1.41z"
+              fill="currentColor" />
+          </svg>
+          Pincéis
+        </button>
+      </div>
+
+      <!-- LAYERS PANEL -->
+      <div id="panel-layers" class="panel-content active">
+        <div id="layer-controls">
+          <button id="btn-add-layer" title="Adicionar Camada">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"
+                fill="currentColor" />
+            </svg>
+          </button>
+          <button id="btn-dupe-layer" title="Duplicar Camada">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
+                fill="currentColor" />
+            </svg>
+          </button>
+          <button id="btn-del-layer" title="Excluir Camada">
+            <svg viewBox="0 0 24 24">
+              <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                fill="currentColor" />
+            </svg>
+          </button>
+          <button id="btn-merge-down" title="Mesclar Abaixo">
+            <svg viewBox="0 0 24 24">
+              <path d="M20 5.41L18.59 4 7 15.59V9H5v10h10v-2H8.41z" fill="currentColor" />
+            </svg>
+          </button>
+          <button id="btn-flatten" title="Mesclar Todas">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z"
+                fill="currentColor" />
+            </svg>
+          </button>
+          <!-- Import Layer Photo Button -->
+          <button id="btn-import-layer" title="Importar Imagem (Nova Camada)">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5.04-6.71l-2.75 3.54-1.96-2.36L6.5 17h11l-3.54-4.71z"
+                fill="currentColor" />
+            </svg>
+          </button>
+          <input type="file" id="import-layer-input" accept="image/*" class="hidden">
+        </div>
+        <div id="layer-mode-row">
+          <select id="blend-mode-select"></select>
+          <input type="range" id="layer-opacity" min="0" max="100" value="100" title="Opacidade da Camada">
+          <span id="layer-opacity-val">100%</span>
+        </div>
+        <div id="layer-list"></div>
+      </div>
+
+      <!-- BRUSH LIBRARY PANEL -->
+      <div id="panel-brushlib" class="panel-content">
+        <div id="brushlib-controls">
+          <button id="btn-import-brush">
+            <svg viewBox="0 0 24 24">
+              <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor" />
+            </svg>
+            Importar .ibp
+          </button>
+          <input type="file" id="ibp-file-input" accept=".ibp,.zip" style="display:none">
+        </div>
+        <div id="brush-list"></div>
+      </div>
+    </div>
+
+    <!-- BOTTOM PANEL -->
+    <div id="bottom-panel">
+      <!-- COLOR SECTION -->
+      <div id="color-section">
+        <canvas id="color-wheel" width="140" height="140"></canvas>
+        <div id="color-sliders">
+          <div class="slider-row">
+            <label class="sl-lbl" style="color:#ff6b6b">H</label>
+            <div class="sl-track hue-track"><input type="range" id="sl-h" min="0" max="360" value="0"></div>
+            <span id="val-h">0</span>
+          </div>
+          <div class="slider-row">
+            <label class="sl-lbl" style="color:#aaa">S</label>
+            <div class="sl-track"><input type="range" id="sl-s" min="0" max="100" value="0"></div>
+            <span id="val-s">0</span>
+          </div>
+          <div class="slider-row">
+            <label class="sl-lbl" style="color:#eee">V</label>
+            <div class="sl-track"><input type="range" id="sl-v" min="0" max="100" value="0"></div>
+            <span id="val-v">0</span>
+          </div>
+          <div class="slider-row">
+            <label class="sl-lbl" style="color:#888">A</label>
+            <div class="sl-track"><input type="range" id="sl-a" min="0" max="100" value="100"></div>
+            <span id="val-a">100</span>
+          </div>
+          <div class="hex-row">
+            <span class="hex-hash">#</span>
+            <input type="text" id="hex-input" maxlength="6" value="000000" spellcheck="false">
+            <div id="color-preview"></div>
+          </div>
+        </div>
+        <div id="color-swatches-col">
+          <div class="swatches-label">Recentes</div>
+          <div id="recent-swatches"></div>
+          <div class="swatches-label" style="margin-top:6px">Paleta</div>
+          <div id="palette-swatches"></div>
+        </div>
+      </div>
+
+      <!-- BRUSH SETTINGS -->
+      <div id="brush-section">
+        <div class="bs-header">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37l-1.34-1.34c-.39-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.02 0-1.41z"
+              fill="currentColor" />
+          </svg>
+          <span id="current-brush-name">Hard Pen</span>
+        </div>
+        <div class="bs-row"><label>Tamanho</label><input type="range" id="bs-size" min="1" max="300" value="10"><span
+            id="bv-size">10</span></div>
+        <div class="bs-row"><label>Opacidade</label><input type="range" id="bs-opacity" min="1" max="100"
+            value="100"><span id="bv-opacity">100</span></div>
+        <div class="bs-row"><label>Fluxo</label><input type="range" id="bs-flow" min="1" max="100" value="100"><span
+            id="bv-flow">100</span></div>
+        <div class="bs-row"><label>Dureza</label><input type="range" id="bs-hardness" min="0" max="100"
+            value="100"><span id="bv-hardness">100</span></div>
+        <div class="bs-row"><label>Espaçamento</label><input type="range" id="bs-spacing" min="1" max="200"
+            value="20"><span id="bv-spacing">20</span></div>
+        <div class="bs-row"><label>Dispersão</label><input type="range" id="bs-scatter" min="0" max="200"
+            value="0"><span id="bv-scatter">0</span></div>
+        <div class="bs-preview-wrap">
+          <canvas id="brush-preview" width="120" height="50"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODALS -->
+    <div id="modal-overlay" class="hidden">
+      <!-- Text Input Modal -->
+      <div id="modal-text" class="modal hidden">
+        <div class="modal-title">
+          <svg viewBox="0 0 24 24">
+            <path d="M5 4v3h5.5v12h3V7H19V4z" fill="currentColor" />
+          </svg>
+          Inserir Texto
+        </div>
+        <div class="modal-row"><label>Texto</label><textarea id="text-input" rows="3"
+            placeholder="Digite o texto..."></textarea></div>
+        <div class="modal-row"><label>Fonte</label>
+          <select id="text-font">
+            <option>Arial</option>
+            <option>Times New Roman</option>
+            <option>Courier New</option>
+            <option>Georgia</option>
+            <option>Verdana</option>
+            <option>Impact</option>
+          </select>
+        </div>
+        <div class="modal-row"><label>Tamanho</label><input type="number" id="text-size" value="32" min="6" max="400">
+        </div>
+        <div class="modal-actions">
+          <button class="btn-cancel modal-close">Cancelar</button>
+          <button id="modal-text-ok" class="btn-primary">Inserir</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu Dropdown -->
+    <div id="app-menu" class="hidden">
+      <button id="menu-new">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"
+            fill="currentColor" />
+        </svg>
+        Nova Arte
+      </button>
+      <button id="menu-open">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z"
+            fill="currentColor" />
+        </svg>
+        Abrir Imagem
+      </button>
+      <div class="menu-sep"></div>
+      <button id="menu-save-local">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M17 12h-5v5h5v-5zM16 1l-6 0-1 0H5c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7l-5-6zm3 20H5V3h7v5h7v13z"
+            fill="currentColor" />
+        </svg>
+        Salvar na Galeria
+      </button>
+      <button id="menu-save-png">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2v9.67z"
+            fill="currentColor" />
+        </svg>
+        Salvar como PNG
+      </button>
+      <button id="menu-save-jpg">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2v9.67z"
+            fill="currentColor" />
+        </svg>
+        Salvar como JPG
+      </button>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast"></div>
+  </div>
+
+  <!-- Hidden inputs -->
+  <input type="file" id="open-image-input" accept="image/*" style="display:none">
+
+  <script src="storage.js"></script>
+  <script src="engine.js"></script>
+  <script src="ui.js"></script>
+</body>
+
+</html>
